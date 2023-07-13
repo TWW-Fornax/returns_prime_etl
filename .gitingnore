@@ -6,5 +6,5 @@ dist
 *.egg-info
 lib
 .idea/
-double-exchange-300905-493cb131488e.json
-double-exchange-300905-e1e0a75aaa35.json
+returns_prime_etl/double-exchange-300905-493cb131488e.json
+returns_prime_etl/double-exchange-300905-e1e0a75aaa35.json
