@@ -17,7 +17,7 @@ jobs:
         run: zip -r returns_prime_etl.zip .
 
       - name: Upload to GCS
-        uses: google-github-actions/upload-cloud-storage@master
+        uses: google-github-actions/upload-cloud-storage@main
         with:
           credentials: ${{ secrets.GCP_SA_KEY }}
           source: returns_prime_etl.zip
