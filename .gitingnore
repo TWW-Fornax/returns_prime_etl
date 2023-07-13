@@ -8,3 +8,6 @@ lib
 .idea/
 returns_prime_etl/double-exchange-300905-493cb131488e.json
 returns_prime_etl/double-exchange-300905-e1e0a75aaa35.json
+*.csv
+**/__pycache__/**
+.env

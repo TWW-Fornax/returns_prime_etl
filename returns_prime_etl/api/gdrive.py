@@ -11,7 +11,8 @@ class GdriveData:
     def generate_gdrive_client(self):
         return gspread.service_account(filename=f"{self.service_account_path}")
 
-    def fetch_columns_from_api(self, date, client, col_num :int):
+    @staticmethod
+    def fetch_columns_from_api( date, client, col_num :int):
         return client.open(f"report_{date}").sheet1.col_values(col_num)[2:]
 
     def create_df(self, client, date, columns:list):

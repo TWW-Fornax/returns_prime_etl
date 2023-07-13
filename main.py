@@ -1,9 +1,7 @@
 import pathlib
-from datetime import datetime, timedelta
-from api.gdrive  import GdriveData
-from service.modify_df import ModifyDataframe
-from service import bigquery_service
-
+from datetime import datetime
+from returns_prime_etl.api.gdrive import GdriveData
+from returns_prime_etl.service import ModifyDataframe, bigquery_service
 
 if __name__ == '__main__':
     date = datetime.now().strftime('%d-%m-%Y')
