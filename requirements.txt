@@ -1,0 +1,5 @@
+gspread
+pandas
+datetime
+google
+google-cloud-bigquery
