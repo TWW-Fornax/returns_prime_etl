@@ -1,11 +1,10 @@
 import pathlib
 from datetime import datetime
 from returns_prime_etl.api.gdrive import GdriveData
-from returns_prime_etl.service import ModifyDataframe, bigquery_service
+from returns_prime_etl.service import modify_df, bigquery_service
 
 if __name__ == '__main__':
     date = datetime.now().strftime('%d-%m-%Y')
-    #gdrive = GdriveData(r"C:\Users\admin\Documents\Fornax\TheWhiteWillow\service_account_gdrive\double-exchange-300905-493cb131488e.json")
     gdrive = GdriveData(f"{pathlib.Path(__file__).parent.resolve()}\double-exchange-300905-493cb131488e.json")
 
     client = gdrive.generate_gdrive_client()
@@ -28,8 +27,8 @@ if __name__ == '__main__':
                ]
 
     returns_prime_df = gdrive.create_df(client, date, columns)
-    modify_df = ModifyDataframe(returns_prime_df)
+    modify_df = modify_df.ModifyDataframe(returns_prime_df)
     returns_prime_df = modify_df.add_report_upload_date()
     returns_prime_df = modify_df.convert_dtype_to_string(returns_prime_df)
-    bigquery_service.save_df_to_table(returns_prime_df, 'double-exchange-300905.production.returns_prime_report_raw')
+    #bigquery_service.save_df_to_table(returns_prime_df, 'double-exchange-300905.production.returns_prime_report_raw')
 
