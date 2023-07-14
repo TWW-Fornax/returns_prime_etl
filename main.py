@@ -20,7 +20,7 @@ columns = ['serial_number', 'type', 'status', 'customer_name', 'customer_address
                ]
 
 
-def exec(columns = columns, date= datetime.now().strftime('%d-%m-%Y')):
+def exec_report_etl(columns = columns, date= datetime.now().strftime('%d-%m-%Y')):
     gdrive = GdriveData(f"{pathlib.Path(__file__).parent.resolve()}\double-exchange-300905-493cb131488e.json")
     client = gdrive.generate_gdrive_client()
     returns_prime_df = gdrive.create_df(client, date, columns)
