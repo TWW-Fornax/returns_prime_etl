@@ -17,4 +17,4 @@ jobs:
         run: zip -r returns_prime_etl.zip .
 
       - name: Upload to GCS bucket
-        run: gsutil cp returns_prime_etl.zip gs://CLOUD_FUNCTION_BUCKET/
+        run: gsutil cp returns_prime_etl.zip gs://returns_prime_cf_bucket/
