@@ -21,5 +21,5 @@ class GdriveData:
             print(columns[i])
             x = self.fetch_columns_from_api(date, client, i + 1)
             df[f'{columns[i]}'] = pd.Series(x)
-            time.sleep(2)
+            time.sleep(3)
         return df

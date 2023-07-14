@@ -3,12 +3,18 @@ from datetime import datetime
 from returns_prime_etl.api.gdrive import GdriveData
 from returns_prime_etl.service import modify_df, bigquery_service
 
-if __name__ == '__main__':
-    date = datetime.now().strftime('%d-%m-%Y')
-    gdrive = GdriveData(f"{pathlib.Path(__file__).parent.resolve()}\double-exchange-300905-493cb131488e.json")
 
+def exec(columns, date= datetime.now().strftime('%d-%m-%Y')):
+    gdrive = GdriveData(f"{pathlib.Path(__file__).parent.resolve()}\double-exchange-300905-493cb131488e.json")
     client = gdrive.generate_gdrive_client()
-    print(client)
+    returns_prime_df = gdrive.create_df(client, date, columns)
+    modify_df_ = modify_df.ModifyDataframe(returns_prime_df)
+    returns_prime_df = modify_df_.add_report_upload_date()
+    returns_prime_df = modify_df_.convert_dtype_to_string(returns_prime_df)
+    return bigquery_service.save_df_to_table(returns_prime_df, 'double-exchange-300905.production.returns_prime_report_raw')
+
+
+if __name__ == '__main__':
 
     columns = ['serial_number', 'type', 'status', 'customer_name', 'customer_address'
         , 'customer_email', 'customer_phone', 'requested_at', 'order_number'
@@ -26,9 +32,8 @@ if __name__ == '__main__':
         , 'actual_return_method', 'custom_attributes'
                ]
 
-    returns_prime_df = gdrive.create_df(client, date, columns)
-    modify_df = modify_df.ModifyDataframe(returns_prime_df)
-    returns_prime_df = modify_df.add_report_upload_date()
-    returns_prime_df = modify_df.convert_dtype_to_string(returns_prime_df)
-    #bigquery_service.save_df_to_table(returns_prime_df, 'double-exchange-300905.production.returns_prime_report_raw')
+    exec(columns, date = '16-06-2023')
+
+
+
 
