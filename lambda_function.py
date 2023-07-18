@@ -1,7 +1,7 @@
 import pathlib
 from datetime import datetime
-from returns_prime_etl.api.gdrive import GdriveData
-from returns_prime_etl.service import modify_df, bigquery_service
+# from returns_prime_etl.api.gdrive import GdriveData
+# from returns_prime_etl.service import modify_df, bigquery_service
 
 columns = ['serial_number', 'type', 'status', 'customer_name', 'customer_address'
         , 'customer_email', 'customer_phone', 'requested_at', 'order_number'
