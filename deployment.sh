@@ -2,9 +2,9 @@
 
 sudo apt-get install curl
 
-build_python_lib() {
- python setup.py sdist bdist_wheel
-}
+#build_python_lib() {
+# python setup.py sdist bdist_wheel
+#}
 
 create_zip() {
   cd returns_prime_etl || exit
@@ -25,7 +25,8 @@ upload_to_s3() {
 }
 
 deploy() {
-  build_python_lib
+#  build_python_lib
+  create_zip
   upload_to_s3
 }
 
@@ -34,9 +35,12 @@ all)
   deploy
   ;;
 libgen)
-  build_python_lib
+#  build_python_lib
+#  ;;
+#s3deploy)
+  create_zip
   ;;
-s3deploy)
+zip)
   upload_to_s3
   ;;
 *)
