@@ -20,7 +20,7 @@ upload_to_s3() {
   export AWS_ACCESS_KEY_ID="$AWS_ACCESS_KEY_ID"
  # Values coming from git secret manager
   export AWS_SECRET_ACCESS_KEY="$AWS_SECRET_ACCESS_KEY"
-  aws s3 cp returns_prime_etl_lambda_function.zip s3://tww-metabase-bucket
+  aws s3 cp returns_prime_etl_lambda_function.zip s3://tww-metabase-bucket --update
   #aws s3 cp lambda_function.py s3://tww-metabase-bucket/lambda_function.py
 }
 
