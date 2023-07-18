@@ -14,7 +14,7 @@ upload_to_s3() {
  # Values coming from git secret manager
   export AWS_SECRET_ACCESS_KEY="$AWS_SECRET_ACCESS_KEY"
   aws s3 cp dist/*.whl s3://tww-metabase-bucket
-  aws s3 cp delhivery-courier-tracker.py s3://tww-metabase-bucket/main.py
+  aws s3 cp main.py s3://tww-metabase-bucket/main.py
 }
 
 deploy() {
