@@ -8,8 +8,7 @@ build_python_lib() {
 
 upload_to_s3() {
   curl "https://awscli.amazonaws.com/AWSCLIV2.pkg" -o "AWSCLIV2.pkg"
-  unzip AWSCLIV2.zip
-  sudo ./aws/install
+  sudo installer -pkg ./AWSCLIV2.pkg -target /
  # Values coming from git secret manager
   export AWS_ACCESS_KEY_ID="$AWS_ACCESS_KEY_ID"
  # Values coming from git secret manager
