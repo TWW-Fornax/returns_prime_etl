@@ -29,3 +29,7 @@ def exec_report_etl(columns = columns, date= datetime.now().strftime('%d-%m-%Y')
     returns_prime_df = modify_df_.convert_dtype_to_string(returns_prime_df)
     return bigquery_service.save_df_to_table(returns_prime_df, 'double-exchange-300905.production.returns_prime_report_raw')
 
+
+def lambda_handler(event, context):
+    return exec_report_etl()
+
