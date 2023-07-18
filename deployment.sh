@@ -10,7 +10,7 @@ create_zip() {
   cd returns_prime_etl || exit
   zip -r ../returns_prime_etl.zip .
   cd ..
-  zip returns_prime_etl_lambda_function.zip returns_prime_etl.zip connection.py lambda_function.py lambda_handler.py
+  zip -r -u returns_prime_etl_lambda_function.zip returns_prime_etl.zip connection.py lambda_function.py lambda_handler.py
 }
 
 upload_to_s3() {
