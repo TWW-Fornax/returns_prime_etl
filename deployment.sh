@@ -7,7 +7,7 @@ sudo apt-get install curl
 #}
 
 create_zip() {
-  cd returns_prime_etl || exit
+ # cd returns_prime_etl || exit
 #  zip -r ../returns_prime_etl.zip .
 #  cd ..
 #  rm returns_prime_etl_lambda_function.zip
